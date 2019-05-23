@@ -1,9 +1,9 @@
-.top { background-color:#86C166; border-bottom:#D7B98E 6px solid; padding: 7px 0; height: 100px;}
+.top { background-color:#86C166; border-bottom:#D7B98E 6px solid; padding: 7px 0;}
 
 .top .logo { float: left; padding: 0px 160px;}
 .top .nav{  padding-top: 30px; padding-left:80px;}
 
-.nav > ul { overflow: hidden; width: 100%;}
+.nav > ul { overflow: hidden; }
 .nav > ul > li {  width:25%; float: left; }
 .nav > ul > li > a { display: block;  font-size: 20px; font-weight: bold; color: #fff;}
 /* .nav > ul > li.cur > a { font-weight:bold; color: #0a8629; } */
