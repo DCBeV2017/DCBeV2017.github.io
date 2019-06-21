@@ -12,32 +12,183 @@
   <title>Deutsch-Chinesischer Buchclub e.V. 德国华人书友会</title>
   <!-- <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css"> -->
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <!-- <link rel="stylesheet" href="assets/tether/tether.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css"> -->
   <!-- <link rel="stylesheet" href="assets/dropdown/css/style.css"> -->
   <!-- <link rel="stylesheet" href="assets/socicon/css/styles.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="stylesheet" href="assets/gallery/style.css">
   <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css"> -->
-  
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
 
+  <link rel="stylesheet" href="css/swiper.min.css">
+<!-- Demo styles -->
+<style>
+        html, body {
+                position: relative;
+                height: 100%;
+        }
+        body {
+                background: #eee;
+                font-family: sans-serif;
+                font-size: 14px;
+                color: #000;
+                margin: 0;
+                padding: 0;
+        }
+        .swiper-container {
+                width: 100%;
+                height: 100%;
+                background-color: rgb(179, 189, 196);
+                transition: 1s background-color 1.3s;
+        }
+        .swiper-wrapper {
+                transition-delay: 1s;
+                transition-timing-function: cubic-bezier(0.5, 0, 0, 1);
+        }
+        .swiper-slide {
+                text-align: center;
+                font-size: 18px;
+                /* Center slide text vertically */
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                -webkit-justify-content: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                -webkit-align-items: center;
+                align-items: center;
+        }
+        .title {
+                transition-delay: 1s;
+                z-index: 10;
+        }
+        .title h3 {
+                font-weight: 700;
+            font-size: calc(55px + 54 * ((53vw + 53vh) - 520px) / 820);
+                letter-spacing: -1px;
+                color: rgba(255,255,255,0);
+                -webkit-text-stroke: 2px #fff;
+        }
+        .img-box {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                transform: scale(0.6, 0.6);
+                transition-duration: 1s;
+                transition-property: transform;
+                transition-timing-function: cubic-bezier(0.5, 0, 0, 1);
+                opacity: 0.9;
+                overflow: hidden;
+        }
+        .img-box img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transform: scale(1.2, 1.2) translateX(50%);
+                transition-timing-function: cubic-bezier(0.5, 0, 0, 1);
+                transition-property: transform;
+        }
+        .button-prev, .button-next {
+                transition: 0.5s;
+                outline: none;
+                position: absolute;
+                width: 140px;
+                z-index: 10;
+                top: 65vh;
+                transform: translateY(-34px);
+                cursor: pointer;
+        }
+        .button-prev {
+                left: 4vw;
+        }
+        .button-next {
+                right: 4vw;
+        }
+        .button.disabled {
+                opacity: 0.2;
+                cursor: default;
+        }
+        #arrow-svg-home {
+                transform: translateY(353px);
+        }
+        .button-next #arrow-svg-home {
+                transform: translateY(353px) rotateY(180deg);
+                transform-origin: 80px 0px 0px;
+        }
+        svg {
+                transition: 0.5s;
+        }
+        .cls-1 {
+                transition: 0.5s;
+                opacity: 0.4;
+                transform-origin: -20px 40px;
+                opacity: 1;
+        }
+        .cls-4 {
+                transition: 0.5s;
+                stroke-width: 2px;
+                stroke: #fff;
+                fill: none;
+                stroke-dasharray: 1;
+                stroke-dashoffset: 1;
+                opacity: 0.4;
+                transform-origin: 0px 0px 0px;
+        }
+        #arrow-trg {
+                transition: 0.5s;
+                fill: #fff;
+                transform: rotateY(180deg) translate(-53px, 39px);
+        }
+        #line {
+                transition: 0.5s;
+                stroke: #fff;
+                transform: translate(50px, 42px);
+        }
+        .button-prev:not(.disabled):hover svg {
+                transform: translateX(-25px);
+        }
+        .button-next:not(.disabled):hover svg {
+                transform: translateX(25px);
+        }
+        .button:not(.disabled):hover .cls-1 {
+                transform: scale(1.1);
+        }
+        .button:not(.disabled):hover .cls-4 {
+                stroke-dasharray: 2px;
+                stroke-dashoffset: 2px;
+                opacity: 1;
+        }
+        .button:not(.disabled):hover #arrow-trg {
+                transform: rotateY(180deg) translate(-37px, 39px);
+        }
+        .button:not(.disabled):hover #line {
+                transform: translate(35px, 42px) scaleX(0.33);
+        }
+        </style>
 </head>
-<body>
+<body onload="init();"> 
     <!-- header -->
     <header>
         <div class="top">
             <div class="logo">
                     <a href="#">
-                            <img src="images/logo.jpg" alt="Deutsch-Chinesischer Buchclub e.V. 德国华人书友会" width="80" height="80" class="round_conner"></img>
+                            <img src="images/logo.jpg" alt="Deutsch-Chinesischer Buchclub e.V. 德国华人书友会" width="80" height="80" ></img>
                             </a>
 
             </div>
             <div class="nav">
                     <ul>
                             <li><a href="#about">About Us</a></li>
-                            <li><a href="#avtivity">Activity</a></li>
+                            <li><a href="#activity">Activity</a></li>
+                            <li><a href="#booklist">Booklist</a></li>
                             <li><a href="#team">Team</a></li>
                             <li><a href="#contact">Contact Us</a></li>
                     </ul>
@@ -47,17 +198,452 @@
     </header>
     
     <!-- banner -->
-    <div id="banner">
+    <!-- <div id="banner">
             <div id="banner_img">
                     <img style="width:100%;" src="images/banner_dresden.jpg" height="800"></img>
             </div> 
 
-    </div>
+    </div> -->
 
 
+<!-- Swiper -->
+<div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="title" data-swiper-parallax="-130%">
+              <h3>德累斯顿</h3>
+              <h3>Dresden</h3>
+            </div>
+            <div class="img-box"><img src="images/img1.jpg" style="transform:translateX(0);"></div>
+          </div>
+          <div class="swiper-slide">
+            <div class="title" data-swiper-parallax="-130%">
+              <h3>北京</h3>
+              <h3>Beijing</h3>
+            </div>
+            <div class="img-box"><img src="images/img2.jpg"></div>
+          </div>
+          <div class="swiper-slide">
+            <div class="title" data-swiper-parallax="-130%">
+              <h3>杜塞尔多夫</h3>
+              <h3>Düsseldorf</h3>
+            </div>
+            <div class="img-box"><img src="images/img3.jpg"></div>
+          </div>
+        </div>
+        <div class="button-prev button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 350 160 90">
+          <g id="arrow-svg-home">
+            <g id="circ" class="cls-1">
+              <circle cx="42" cy="42" r="40" class="cls-4"></circle>
+            </g>
+            <g id="arrow">
+              <path id="arrow-trg" d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z"></path>
+            </g>
+            <path id="line" d="M120,0H0" class="cls-3" ></path>
+          </g>
+          </svg></div>
+        <!--左箭头-->
+        <div class="button-next button"> <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 350 160 90">
+          <g id="arrow-svg-home">
+            <g id="circ" class="cls-1">
+              <circle  cx="42" cy="42" r="40" class="cls-4"></circle>
+            </g>
+            <g id="arrow">
+              <path id="arrow-trg" d="M.983,6.929,4.447,3.464.983,0,0,.983,2.482,3.464,0,5.946Z" class="cls-2"></path>
+            </g>
+            <path id="line" d="M120,0H0" class="cls-3" ></path>
+          </g>
+          </svg></div>
+        <!--右箭头--> 
+      </div>
+
+
+      <!-- About Us  -->
+     
+              <div class="proverb">
+                        <h1>
+                        Reading can be one thousand kinds of life experience,<br>
+                        not reading people can only live once.<br>
+                        ----George R.R. Martin
+                                                                
+                        </h1>
+              </div>
+              <div id="about">
+              <div class="about"><img src="images/about.png" style="width:100%;"></div>
+              
+            
+                        <div style="width:100%; padding-left:20px; background-color: rgb(255, 255, 255);">
+                                
+                           <img src="images/dcb.jpeg" style="width:50%;z-index: -1;">
+                           <div class="aboutText">                    
+                         <p>We are one group of people, who are willing to share the ideas, wisdom and inspiration.
+                           Like a bridge to make the deep communication between Germany and China.</p>
+
+                        <p> 
+                        德国华人书友会于2019年4月29日正式在德国萨克森州法院注册成功，成为一家在德国法院正式注册的非盈利性机构。
+                        成立以来在德国组织了超过60次的读书会及其他文化活动，现有Dresden、Düsseldorf、Bochum、Beijing四个定期聚会的读书分会，8个微信读书分享交流群、超过1000位书友。
+                        </p>
+                        <!-- <p>
+                        感谢大家一路的支持与鼓励，未来德国华人书友会将继续推广读书、交流的生活方式，打造优质的读书交流平台，微信公众号将推送更多高质量的原创文章。热切期待喜爱读书、想要一起交流、学习、进步的伙伴们加入我们的社群！
+                        </p>                 -->
+                        </div>
+                        </div>
+      </div>
+
+
+      <!-- Activities  -->
+      <div id="activity"> 
+                <div class="about"><img src="images/activity.png" style="width:100%;"></div>
+                <div class="activities">
+                                <!-- <div class="slide-content">
+                                                <div class="slide-item">
+                                                    <div class="slide-item-box">
+                                                        <div class="hd">
+                                                            <a href="javascript:;" class="prev prev-bg"></a>
+                                                            <a href="javascript:;" class="next next-bg"></a>
+                                                        </div>
+                                                        <div class="bd slide-item-body">
+                                                            <ul class="clearfix" style="overflow:visible">
+                                                                <li>
+                                                                    <a href="#">
+                                                                        <div class="new-img">
+                                                                            <img src="images/nwes001.png" alt="">
+                                                                        </div>
+                                                                        <div class="new-body">
+                                                                            <p class="new-body-title">在线教育线下交流会，进阶网校运营达人的第一步！</p>
+                                                                            <p class="new-body-text">为帮助网校解决运营过程中遇到的一些难题，4月25日，杭州阔知网络科技有限公司邀请到了众多一线网校运营人和行业大咖，开展了第8期专为在线教育从业者量身定制的线下交流会——阔知教育私享会。</p>
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#">
+                                                                        <div class="new-img">
+                                                                            <img src="images/nwes002.jpg" alt="">
+                                                                        </div>
+                                                                        <div class="new-body">
+                                                                            <p class="new-body-title">在线教育线下交流会，进阶网校运营达人的第一步！</p>
+                                                                            <p class="new-body-text">为帮助网校解决运营过程中遇到的一些难题，4月25日，杭州阔知网络科技有限公司邀请到了众多一线网校运营人和行业大咖，开展了第8期专为在线教育从业者量身定制的线下交流会——阔知教育私享会。</p>
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#">
+                                                                        <div class="new-img">
+                                                                            <img src="images/nwes003.jpg" alt="">
+                                                                        </div>
+                                                                        <div class="new-body">
+                                                                            <p class="new-body-title">在线教育线下交流会，进阶网校运营达人的第一步！</p>
+                                                                            <p class="new-body-text">为帮助网校解决运营过程中遇到的一些难题，4月25日，杭州阔知网络科技有限公司邀请到了众多一线网校运营人和行业大咖，开展了第8期专为在线教育从业者量身定制的线下交流会——阔知教育私享会。</p>
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#">
+                                                                        <div class="new-img">
+                                                                            <img src="images/nwes003.jpg" alt="">
+                                                                        </div>
+                                                                        <div class="new-body">
+                                                                            <p class="new-body-title">在线教育线下交流会，进阶网校运营达人的第一步！</p>
+                                                                            <p class="new-body-text">为帮助网校解决运营过程中遇到的一些难题，4月25日，杭州阔知网络科技有限公司邀请到了众多一线网校运营人和行业大咖，开展了第8期专为在线教育从业者量身定制的线下交流会——阔知教育私享会。</p>
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#">
+                                                                        <div class="new-img">
+                                                                            <img src="images/nwes001.png" alt="">
+                                                                        </div>
+                                                                        <div class="new-body">
+                                                                            <p class="new-body-title">在线教育线下交流会，进阶网校运营达人的第一步！</p>
+                                                                            <p class="new-body-text">为帮助网校解决运营过程中遇到的一些难题，4月25日，杭州阔知网络科技有限公司邀请到了众多一线网校运营人和行业大咖，开展了第8期专为在线教育从业者量身定制的线下交流会——阔知教育私享会。</p>
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#">
+                                                                        <div class="new-img">
+                                                                            <img src="images/nwes005.png" alt="">
+                                                                        </div>
+                                                                        <div class="new-body">
+                                                                            <p class="new-body-title">在线教育线下交流会，进阶网校运营达人的第一步！</p>
+                                                                            <p class="new-body-text">为帮助网校解决运营过程中遇到的一些难题，4月25日，杭州阔知网络科技有限公司邀请到了众多一线网校运营人和行业大咖，开展了第8期专为在线教育从业者量身定制的线下交流会——阔知教育私享会。</p>
+                                                                        </div>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div> 
+                                                </div>
+                
+                                            </div> -->
+
+                                            <div class="swiper-container">
+                                                        <div class="swiper-wrapper">
+                                                            <div class="swiper-slide">
+                                                                    <div class="slide-card">
+                                                                        <img src="images/activity001.jpg" width="90%" height="280px" class="round_conner">
+                                                                        <h3><span style="color:#252b3a;letter-spacing:.65px;text-align:left">德累斯顿第57期线下活动</span></h3>
+                                                                        <p>
+                                                                         身为哥伦比亚人类学博士的作者突然对料理着迷，于是毅然决然的放弃学位去学了厨艺。    
+                                                                        </p>
+
+
+                                                                    </div>
+
+                                                            </div>
+                                                            <div class="swiper-slide">
+                                                                        <div class="slide-card">
+                                                                                        <img src="images/activity002.jpg" width="90%" height="280px" class="round_conner">
+                                                                                        <h3><span style="color:#252b3a;letter-spacing:.65px;text-align:left">德累斯顿第57期线下活动</span></h3>
+                                                                                        <p>
+                                                                                         身为哥伦比亚人类学博士的作者突然对料理着迷，于是毅然决然的放弃学位去学了厨艺。虽然北京城暴雨倾盆，但是挡不住8位小伙伴一起分享阅读喜悦的热情。在一间茶室里，大家共同开脑洞，敞开心扉表达自己对这个世界的思索。    
+                                                                                        </p>
+                
+                
+                                                                                    </div>
+                                                            </div>
+                                                            <div class="swiper-slide">
+                                                                        <div class="slide-card">
+                                                                                        <img src="images/activity003.jpg" width="90%" height="280px" class="round_conner">
+                                                                                        <h3><span style="color:#252b3a;letter-spacing:.65px;text-align:left">德累斯顿第57期线下活动</span></h3>
+                                                                                        <p>
+                                                                                         身为哥伦比亚人类学博士的作者突然对料理着迷，于是毅然决然的放弃学位去学了厨艺。虽然北京城暴雨倾盆，但是挡不住8位小伙伴一起分享阅读喜悦的热情。在一间茶室里，大家共同开脑洞，敞开心扉表达自己对这个世界的思索。    
+                                                                                        </p>
+                
+                
+                                                                                    </div>
+                                                            </div>
+                                                            <div class="swiper-slide">
+                                                                        <div class="slide-card">
+                                                                                        <img src="images/activity004.jpg" width="90%" height="280px" class="round_conner">
+                                                                                        <h3><span style="color:#252b3a;letter-spacing:.65px;text-align:left">德累斯顿第57期线下活动</span></h3>
+                                                                                        <p>
+                                                                                         身为哥伦比亚人类学博士的作者突然对料理着迷，于是毅然决然的放弃学位去学了厨艺。虽然北京城暴雨倾盆，但是挡不住8位小伙伴一起分享阅读喜悦的热情。在一间茶室里，大家共同开脑洞，敞开心扉表达自己对这个世界的思索。   
+                                                                                        </p>
+                
+                
+                                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- 如果需要分页器 -->
+                                                        <div class="swiper-pagination"></div>
+                                                        
+                                                        <!-- 如果需要导航按钮 -->
+                                                        <div class="swiper-button-prev"></div>
+                                                        <div class="swiper-button-next"></div>
+                                                        
+                                                    </div>
+
+
+                </div>
+
+      </div>
+      
+      
+      <!-- Booklist -->
+      <div id="booklist"> 
+                <div class="about"><img src="images/booklist.png" style="width:100%;"></div>
+
+      </div>
+
+
+      <!-- Team -->
+      <div id="team"> 
+                <div class="about"><img src="images/team.png" style="width:100%;"></div>
+
+      </div>
+
+      <!-- Footer -->
+       <div id="contact">
+             <!-- <div style="height:20px;"></div> -->
+             <div style="margin-top:50px;margin-left:40px; width:40%;">
+               <h3>You can find us here:</h3> 
+                     <div id="map"></div>
+                
+             </div>
+             
+
+             <div class="contactInfo">
+                
+
+                        <dl> 
+                        <dt>
+                                <span class="icon1"></span>
+                        </dt> 
+                        <dd>
+                                E-Mail：
+                                <a href="mailto:Contact.Us.DCB@gmail.com">Contact.Us.DCB@gmail.com</a>
+                        </dd> 
+                        </dl> 
+                        <dl> 
+                        <dt>
+                                <span class="icon2"></span>
+                        </dt> 
+                        <dd>
+                                Address: Zellescher Weg 18, 01069, Dresden
+                        </dd> 
+                        </dl>
+
+                        <p>
+                        感谢大家一路的支持与鼓励，未来德国华人书友会将继续推广读书、交流的生活方式，打造优质的读书交流平台，微信公众号将推送更多高质量的原创文章。热切期待喜爱读书、想要一起交流、学习、进步的伙伴们加入我们的社群！
+                        </p>   
+                    
+                        <div class="copyRight" style="bottom:10px;">
+                                        &copy; 
+                                       <script fixed="true" type="text/javascript">document.write((new Date()).getFullYear());</script> 
+                                       <a href="#"  class="dcb">DCB.e.V. Dresden</a> All rights reserved
+                                      </div> 
+                     <!-- <form action="mailto:Contact.Us.DCB@gmail.com">
+                             <input type="submit" value="Give Feedback">
+                     </form> -->
+
+             </div>
+
+            
+           
+       
+       
+        </div>    
+        <!-- <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+        <script>
+        map = new OpenLayers.Map("demoMap");
+        map.addLayer(new OpenLayers.Layer.OSM());
+        map.zoomToMaxExtent();
+        </script> -->
 
 <!-- scripts -->
   <script src="assets/web/assets/jquery/jquery.min.js"></script>
-  
+  <script src="js/swiper.min.js"></script> 
+
+<script>
+    //转载请标注版权 Swiper中文网 www.swiper.com.cn
+    lock = false;
+	bgColor = ["rgb(179, 189, 196)","rgb(180, 183, 166)","rgb(140, 152, 187)"]; //背景色
+    var mySwiper = new Swiper('.swiper-container',{
+		   speed: 1300,
+		   allowTouchMove: false,//禁止触摸滑动
+		   parallax : true,  //文字位移视差
+		   on:{
+		     transitionStart: function(){
+				 lock = true;//锁住按钮
+			 	 slides = this.slides
+				 imgBox = slides.eq(this.previousIndex).find('.img-box') //图片包装器
+				 imgPrev = slides.eq(this.previousIndex).find('img')  //当前图片
+				 imgActive = slides.eq(this.activeIndex).find('img')  //下一张图片
+				 derection = this.activeIndex-this.previousIndex
+				 this.$el.css("background-color",bgColor[this.activeIndex]);//背景颜色动画
+				 
+                 imgBox.transform('matrix(0.6, 0, 0, 0.6, 0, 0)');
+				 imgPrev.transition(1000).transform('matrix(1.2, 0, 0, 1.2, 0, 0)');//图片缩放视差
+				 this.slides.eq(this.previousIndex).find('h3').transition(1000).css('color','rgba(255,255,255,0)');//文字透明动画
+				 
+				 imgPrev.transitionEnd(function () {
+				   imgActive.transition(1300).transform('translate3d(0, 0, 0) matrix(1.2, 0, 0, 1.2, 0, 0)');//图片位移视差
+                   imgPrev.transition(1300).transform('translate3d('+60*derection+'%, 0, 0)  matrix(1.2, 0, 0, 1.2, 0, 0)');
+                 });
+             },
+			 transitionEnd: function(){
+                 this.slides.eq(this.activeIndex).find('.img-box').transform(' matrix(1, 0, 0, 1, 0, 0)');
+				 imgActive = this.slides.eq(this.activeIndex).find('img')
+				 imgActive.transition(1000).transform(' matrix(1, 0, 0, 1, 0, 0)');
+				 this.slides.eq(this.activeIndex).find('h3').transition(1000).css('color','rgba(255,255,255,1)');
+				 
+				 imgActive.transitionEnd(function () {
+				   lock = false
+                 });
+				 //第一个和最后一个，禁止按钮
+				 if(this.activeIndex == 0){
+					 this.$el.find('.button-prev').addClass('disabled');
+				 }else{
+					 this.$el.find('.button-prev').removeClass('disabled');
+				 }
+				 
+				 if(this.activeIndex == this.slides.length - 1){
+					 this.$el.find('.button-next').addClass('disabled');
+				 }else{
+					 this.$el.find('.button-next').removeClass('disabled');
+				 }
+             },
+			 init:function(){
+				 this.emit('transitionEnd');//在初始化时触发一次transitionEnd事件
+		  	 },
+		  
+		  }
+		});
+		
+	//不使用自带的按钮组件，使用lock控制按钮锁定时间
+	mySwiper.$el.find('.button-next').on('click',function(){
+		  if(!lock){
+		    mySwiper.slideNext();
+		  }
+		})
+	mySwiper.$el.find('.button-prev').on('click',function(){
+		  if(!lock){
+		    mySwiper.slidePrev();
+		  }
+		})	
+  </script>
+<!-- Script for the map in footer -->
+   <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+   <script>
+                function init() {
+        
+                  var lat = 51.028641;
+                  var lon = 13.736611;
+                  var zoom = 15;
+                  var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+                  var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+                  var position       = new OpenLayers.LonLat(lon, lat).transform( fromProjection, toProjection);
+                
+                  map = new OpenLayers.Map("map");
+                  var mapnik         = new OpenLayers.Layer.OSM();
+                  map.addLayer(mapnik);
+
+                  var markers = new OpenLayers.Layer.Markers( "Markers" );
+                  map.addLayer(markers);
+                  markers.addMarker(new OpenLayers.Marker(position));
+
+                  map.setCenter(position, zoom);
+                }
+   </script>
+
+<!-- script for sliding activities-->
+        <!-- <script type="text/javascript">
+                jQuery(".slide-item-box").slide({
+                titCell: ".hd ul",
+                mainCell: ".bd ul",
+                autoPage: true,
+                effect: "leftLoop",
+                autoPlay: false,
+                scroll: 3,
+                vis: 3,
+                delayTime: 700,
+                trigger: "click"
+                })
+        </script> -->
+
+   <script>        
+        var mySwiper = new Swiper ('.swiper-container', {
+                loop: true, // 循环模式选项
+                speed:250,
+                slidesPerView: 3,
+                spaceBetween: 0,
+                slidesPerGroup: 3,
+                autoplay: true,
+                
+                // 如果需要分页器
+                pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                },
+                
+                // 如果需要前进后退按钮
+                navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+                },
+                
+        })        
+   </script>
 </body>
 </html>
